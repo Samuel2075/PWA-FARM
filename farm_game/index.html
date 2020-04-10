@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Farm</title>
+    <link rel="stylesheet" href="style_index.css">
+
+</head>
+<body>
+
+    <div class="top">
+        <div class="overlay_top"></div>
+        <div class="name">
+            <p class="title">Nome</p>
+            <p class="value">Samuel</p>
+        </div>
+        <div class="birthday_month">
+            <p class="title">Aniversario</p>
+            <p class="value">Junho</p>
+        </div>
+        <div class="age">
+            <p class="title">Idade</p>
+            <p class="value">23</p>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="bg">
+            <div id="alert">
+
+                <p id="text_alert">Parabéns hoje é o seu aniversário!</p>
+
+            </div>
+            <div class="conjunto">
+            
+                <button class="plant_new" onclick="detect_background(0, this);"></button >
+                <button class="plant_new" onclick="detect_background(1, this);"></button>
+                <button class="plant_new" onclick="detect_background(2, this);"></button>
+            
+            </div>
+            
+            <div class="conjunto">
+
+                <button class="plant_new" onclick="detect_background(3, this);"></button>
+                <button class="plant_new" onclick="detect_background(4, this);"></button>
+                <button class="plant_new" onclick="detect_background(5, this);"></button>
+            
+            </div>
+            
+            <div class="conjunto">
+            
+                <button  class="plant_new" onclick="detect_background(6, this);"></button >
+                <button  class="plant_new" onclick="detect_background(7, this);"></button >
+                <button  class="plant_new" onclick="detect_background(8, this);"></button >
+            
+            </div>
+
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+            
+            <div class="w-100">
+              
+              <span class="close">&times;</span>
+          
+            </div>
+
+            <div class="w-100 dflex_column_center">
+
+                <p>Loja</p>
+                
+                <img src="imgs/plants/cotton.png" style="width: 30%;" alt="">
+                <p>Algodão</p>
+                <button class="" onclick="buy_plant(0);">Comprar</button>
+                <p id="text_alert">Custo: 50$ / Retorno: 80$</p>
+
+                <img src="imgs/plants/corn.png" style="width: 30%;" alt="">
+                <p>Milho</p>
+                <button class="" onclick="buy_plant(1);">Comprar</button>
+                <p id="text_alert">Custo: 80$ / Retorno: 130$</p>
+
+            </div>
+
+        </div>
+      
+    </div>
+
+    <div class="bottom">
+
+        <button class="add_plant" onclick="open_modal('add_plant');"></button>
+        <button class="remove_plant" onclick="remove_plant();"></button>
+        <button class="store" onclick="open_modal('store');"></button>
+        
+    </div>
+        
+    <script src="script.js"></script>
+    <script src="load_index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style_register.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+            <div id="alert">
+
+                <p id="text_alert">Preencha todos os dados!</p>
+
+            </div>
+            <div class="group">
+
+                <label for="name">Nome:</label>
+                <input type="text" placeholder="máximo 10 caracteres" id="name" name="name">
+
+            </div>
+
+            <div class="group">
+
+                <label for="age">Idade:</label>
+                <input type="text" id="age" name="age" placeholder="máximo 3 caracteres">
+            
+            </div>
+
+            <div class="group">
+            
+                <label for="birthday">Aniversário:</label>
+                <input type="text" id="birthday" name="birthday" placeholder="00/00/0000">
+            
+            </div>
+
+            <div class="register">
+
+                <button onclick="register_user();"></button >
+            
+            </div>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+    <script src="jquery.mask.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $('#birthday').mask('00/00/0000');
+            $('#age').mask('000');
+        });
+    </script>
+    
+</body>
+</html>

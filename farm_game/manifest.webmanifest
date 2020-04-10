@@ -1,0 +1,12 @@
+{
+    "name": "Minha Primeira PWA",
+    "short_name": "PWA",
+    "start_url": ".",
+    "display": "standalone",
+    "description": "Uma PWA simples, mas que marca o início de grandes projetos",
+    "icons": [{
+      "src": "imagens/icones/app-icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }]
+  }

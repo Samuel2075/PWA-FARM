@@ -1,0 +1,31 @@
+
+body{
+    margin: 0;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    /* background-color: #aa7f00a1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-image: url(imgs/bg_fundo.png);
+}
+
+img{
+    width: 90%;
+}
+
+button{
+    background-image: url(imgs/btn.png);
+    width: 100%;
+    height: 20%;
+    background-color: transparent;
+    border: navajowhite;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}

@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background-image: url(imgs/background_register.gif);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+#alert{
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px;
+    width: 80%;
+    height: 20%;
+    z-index: 1;
+    background-color: #a20404f0;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    display: none;
+}
+
+#alert p{
+    font-size: x-large;
+    text-align: center;
+    color: white;
+}
+
+.overlay{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #0000007a;
+}
+
+.group input{
+    height: 20%;
+    background-image: url(imgs/plants/input.png);
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+label{
+    
+    font-size: x-large;
+    color: #f3ff59;
+}
+
+.group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px;
+    width: 80%;
+    height: 25%;
+    z-index: 1;
+}
+
+.register{
+    display: flex;
+    width: 80%;
+    height: 20%;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.register button{
+    height: 50%;
+    width: 60%;
+    background-size: contain;
+    background-image: url(imgs/BTN_REGISTER.png);
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+}
