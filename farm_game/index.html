@@ -33,27 +33,28 @@
                 <p id="text_alert">Parabéns hoje é o seu aniversário!</p>
 
             </div>
+            <p style="text-align: center;font-size: larger;margin: 0;">Planta selecionada: <span id="select_plant">Nenhuma</span></p>
             <div class="conjunto">
             
-                <button class="plant_new" onclick="detect_background(0, this);"></button >
-                <button class="plant_new" onclick="detect_background(1, this);"></button>
-                <button class="plant_new" onclick="detect_background(2, this);"></button>
+                <button id="btn_0" class="plant_new" onclick="detect_background(0, this);"></button >
+                <button id="btn_1" class="plant_new" onclick="detect_background(1, this);"></button>
+                <button id="btn_2" class="plant_new" onclick="detect_background(2, this);"></button>
             
             </div>
             
             <div class="conjunto">
 
-                <button class="plant_new" onclick="detect_background(3, this);"></button>
-                <button class="plant_new" onclick="detect_background(4, this);"></button>
-                <button class="plant_new" onclick="detect_background(5, this);"></button>
+                <button id="btn_3" class="plant_new" onclick="detect_background(3, this);"></button>
+                <button id="btn_4" class="plant_new" onclick="detect_background(4, this);"></button>
+                <button id="btn_5" class="plant_new" onclick="detect_background(5, this);"></button>
             
             </div>
             
             <div class="conjunto">
             
-                <button  class="plant_new" onclick="detect_background(6, this);"></button >
-                <button  class="plant_new" onclick="detect_background(7, this);"></button >
-                <button  class="plant_new" onclick="detect_background(8, this);"></button >
+                <button  id="btn_6" class="plant_new" onclick="detect_background(6, this);"></button >
+                <button  id="btn_7" class="plant_new" onclick="detect_background(7, this);"></button >
+                <button  id="btn_8" class="plant_new" onclick="detect_background(8, this);"></button >
             
             </div>
 
@@ -72,15 +73,17 @@
 
             <div class="w-100 dflex_column_center">
 
-                <p>Loja</p>
-                
+                <p style="margin: 0;">Loja</p>
+                <p style="margin: 0;">Seu dinheiro: <span id="gold_span"></span> </p>
                 <img src="imgs/plants/cotton.png" style="width: 30%;" alt="">
-                <p>Algodão</p>
+                <p>Algodão <span id="cotton_seeds_char"></span></p>
+                <button class="" onclick="use_plant(0);" style="margin-bottom: 5px;">Plantar</button>
                 <button class="" onclick="buy_plant(0);">Comprar</button>
                 <p id="text_alert">Custo: 50$ / Retorno: 80$</p>
 
                 <img src="imgs/plants/corn.png" style="width: 30%;" alt="">
-                <p>Milho</p>
+                <p>Milho <span id="corn_seeds_char"></span></p>
+                <button class="" onclick="use_plant(1);" style="margin-bottom: 5px;">Plantar</button>
                 <button class="" onclick="buy_plant(1);">Comprar</button>
                 <p id="text_alert">Custo: 80$ / Retorno: 130$</p>
 

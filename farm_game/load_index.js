@@ -1,5 +1,5 @@
 
-let char = JSON.parse(localStorage.getItem('char'));
+// let char = JSON.parse(localStorage.getItem('char'));
 
 
 let name = document.getElementsByClassName('name');
@@ -11,10 +11,15 @@ birthday[0].getElementsByClassName('value')[0].innerHTML = char.birthday;
 age[0].getElementsByClassName('value')[0].innerHTML = char.age;
 let aux_date_birthday = char.birthday.split('/')[1] + "/" + char.birthday.split('/')[0] + "/" + char.birthday.split('/')[2];
 
-let today_date = new Date();
-let date_birthday = new Date(aux_date_birthday);
 
+let date_birthday = new Date(aux_date_birthday);
 let obj_char = {};
+
+if(char.seed_current != null){
+
+    document.getElementById("select_plant").innerText = plants_local[char.seed_current].name;
+
+}
 
 if ((today_date.getDate()) == (date_birthday.getDate()) && (today_date.getMonth() + 1) == (date_birthday.getMonth() + 1)) {
     
@@ -51,10 +56,6 @@ if ((today_date.getDate()) == (date_birthday.getDate()) && (today_date.getMonth(
     localStorage.setItem('char', JSON.stringify(obj_char));
     age[0].getElementsByClassName('value')[0].innerHTML = parseInt(char.age) + 1;
     
-}else{
-    
-    console.log("diferente");
-
 }
 
 
