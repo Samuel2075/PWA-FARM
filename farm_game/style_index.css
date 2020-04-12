@@ -115,9 +115,9 @@ body{
     border: none;
     
 }
-.store{
+.next_day{
     margin: 2%;
-    background-image: url(imgs/store_.png);
+    background-image: url(imgs/next_day.png);
     margin: 2%;
     width: 20%;
     background-size: contain;

@@ -1,7 +1,3 @@
-
-// let char = JSON.parse(localStorage.getItem('char'));
-
-
 let name = document.getElementsByClassName('name');
 let birthday = document.getElementsByClassName('birthday_month');
 let age = document.getElementsByClassName('age');

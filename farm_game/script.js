@@ -139,6 +139,66 @@ function detect_background(id, this_param){
     
 }
 
+function next_day(){
+
+    vases = JSON.parse(localStorage.getItem('vases'));
+    let seeds_planted = 0;
+    let btn_bg = "";
+    let url = "";
+    
+    for (let index = 0; index < vases.length; index++) {
+
+        if(vases[index] != null){
+            
+            seeds_planted++;
+            
+            switch (vases[index].stage_current) {
+            
+                case 0:
+                    url = vases[index].seed_img;
+                    break;
+                case 1:
+                    url = vases[index].stage1_img;
+                    break;
+                case 2:
+                    url = vases[index].stage2_img;
+                    break;
+                case 3:
+                    url = vases[index].stage3_img;
+                    break;
+                default:
+                    break;
+
+            }
+            console.log(url);
+            
+            if(url != null){
+
+                btn_bg = document.getElementById("btn_" + index);
+                btn_bg.style.backgroundImage = "url(" + url + ")";
+            
+            }
+            
+            vases[index].stage_current = vases[index].stage_current + 1;
+            localStorage.setItem('vases', JSON.stringify(vases));
+        
+
+        }
+        
+    }    
+
+    if(seeds_planted == 0 && char.plants.corn == 0 && char.plants.cotton && char.gold < 50){
+        
+        localStorage.clear();
+        window.location.href = 'index.html';
+    
+    }
+    // window.location.href = 'index.html';
+
+    // document.location.reload(true);
+    
+}
+
 function open_modal(){
 
     let modal = document.getElementById("myModal");
