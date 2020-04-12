@@ -31,6 +31,7 @@ if (localStorage.getItem("vases") === null) {
 
 }else{
     let btn_bg = "";
+    let url_bgs = "";
     vases = JSON.parse(localStorage.getItem('vases'));
 
     for (let index = 0; index < vases.length; index++) {
@@ -39,7 +40,38 @@ if (localStorage.getItem("vases") === null) {
 
             btn_bg = document.getElementById("btn_" + index);
             
-            btn_bg.style.backgroundImage = "url(" + vases[index].seed_img + ")";
+            switch (vases[index].stage_current) {
+
+                case 0:
+
+                    url_bgs = vases[index].seed_img;
+                    break;
+
+                case 1:
+
+                    url_bgs = vases[index].seed_img;
+                    break;
+
+                case 2:
+
+                    url_bgs = vases[index].stage1_img;
+                    break;
+
+                case 3:
+                    
+                    url_bgs = vases[index].stage2_img;
+                    break;
+            
+                default:
+                    
+                    if(vases[index].stage3_img != null){
+                        
+                        url_bgs = vases[index].stage3_img;
+                        
+                    }
+                    break;
+            }
+            btn_bg.style.backgroundImage = "url(" + url_bgs + ")";
         
         }
         
@@ -52,7 +84,6 @@ if (localStorage.getItem("vases") === null) {
 insert_plant_array("imgs/plants/seeds.png", "imgs/plants/stage1_cotton.png", "imgs/plants/stage2_cotton.png", null, "Algodão", 50, 80);
 insert_plant_array("imgs/plants/seeds.png", "imgs/plants/stage1_corn.png", "imgs/plants/stage2_corn.png", "imgs/plants/stage3_corn.png", "Milho", 80, 130);
 
-char.gold = 999999999999;
 localStorage.setItem('plants', JSON.stringify(plants));
 localStorage.setItem('char', JSON.stringify(char));
 
@@ -69,7 +100,8 @@ function insert_plant_array(seed_img, stage1_img, stage2_img, stage3_img, name, 
         name: "",
         price: 0,
         stage_current: 0,
-        sale_value: 0
+        sale_value: 0,
+        finish: false
         
     }
 
@@ -78,6 +110,7 @@ function insert_plant_array(seed_img, stage1_img, stage2_img, stage3_img, name, 
     obj_plant.stage2_img = stage2_img;
     obj_plant.stage3_img = stage3_img;
     obj_plant.name = name;
+    obj_plant.sale_value = sale_value;
     obj_plant.price = price;
     
     plants.push(obj_plant);
@@ -129,7 +162,32 @@ function detect_background(id, this_param){
         
     }else{
 
-        alert("Este vaso já possue uma planta, remova ela antes de plantar outra!");
+        if(char.remove_plant){
+
+            if(vases[id].finish){
+
+                this_param.style.backgroundImage = "url('imgs/bg.png')";
+                char.gold = char.gold + vases[id].sale_value;
+                vases[id] = null;
+            
+            }else{
+
+                let confirm_var = confirm("Esta planta ainda não está pronta, deseja remove-la mesmo assim? Você não recebera gold por ela.");
+                
+                if(confirm_var){
+
+                    this_param.style.backgroundImage = "url('imgs/bg.png')";
+                    vases[id] = null;
+
+                }
+
+            }
+        
+        }else{
+
+            alert("Este vaso já possue uma planta, remova ela antes de plantar outra!");
+        
+        }
 
     }
 
@@ -155,31 +213,51 @@ function next_day(){
             switch (vases[index].stage_current) {
             
                 case 0:
+                    
                     url = vases[index].seed_img;
+                    
                     break;
                 case 1:
+                    
                     url = vases[index].stage1_img;
+                    
                     break;
                 case 2:
+                    
                     url = vases[index].stage2_img;
+                    
                     break;
                 case 3:
+                    
+                    if(vases[index].stage3_img == null){
+                    
+                        vases[index].finish = true;
+                    
+                    }
+
                     url = vases[index].stage3_img;
+                                    
                     break;
                 default:
+
+                    vases[index].finish = true;
+
                     break;
 
             }
-            console.log(url);
             
-            if(url != null){
+            if(!vases[index].finish){
 
-                btn_bg = document.getElementById("btn_" + index);
-                btn_bg.style.backgroundImage = "url(" + url + ")";
+                if(url != null){
+    
+                    btn_bg = document.getElementById("btn_" + index);
+                    btn_bg.style.backgroundImage = "url(" + url + ")";
+                
+                }
             
+                vases[index].stage_current = vases[index].stage_current + 1;
             }
             
-            vases[index].stage_current = vases[index].stage_current + 1;
             localStorage.setItem('vases', JSON.stringify(vases));
         
 
@@ -193,9 +271,6 @@ function next_day(){
         window.location.href = 'index.html';
     
     }
-    // window.location.href = 'index.html';
-
-    // document.location.reload(true);
     
 }
 
@@ -270,6 +345,15 @@ function buy_plant(id){
 
 }
 
+function remove_plant(){
+
+    char.seed_current = null;
+    char.remove_plant = true;
+    document.getElementById("select_plant").innerText = "Nenhuma";
+    localStorage.setItem('char', JSON.stringify(char));
+
+}
+
 function use_plant(id){
 
     if(id == 0){
@@ -297,7 +381,7 @@ function use_plant(id){
         }
 
     }
-
+    char.remove_plant = false;
     localStorage.setItem('char', JSON.stringify(char));    
     document.getElementById("select_plant").innerText = plants_local[char.seed_current].name;
 
@@ -340,8 +424,9 @@ function register_user(){
                     'corn':[],
                     'cotton':[]
                 },
-                gold: 500,
-                seed_current: null
+                gold: 200,
+                seed_current: null,
+                remove_plant: false
             }
 
             localStorage.setItem('char', JSON.stringify(obj_char));
